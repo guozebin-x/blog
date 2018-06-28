@@ -26,8 +26,10 @@ module.exports = {
         title: 'JavaScript',
         collapsable: false,
         children: [
+          'js/the-little-knowledge',
           'js/basis',
           'js/closure',
+          'js/async',
           'js/vue',
           'js/vue-jsonp',
           'js/azure-storage'
@@ -41,7 +43,7 @@ module.exports = {
         ]
       },
       {
-        title: '书',
+        title: 'Reading notes',
         collapsable: false,
         children: [
           ['books/', '前端工程化简史'],
