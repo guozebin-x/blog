@@ -54,6 +54,7 @@ module.exports = {
         title: '生活',
         collapsable: false,
         children: [
+          'life/english',
           'life/xian'
         ]
       }
