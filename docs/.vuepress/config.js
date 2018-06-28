@@ -18,7 +18,26 @@ module.exports = {
         title: 'node',
         collapsable: false,
         children: [
-          ['node/', 'koa2']
+          ['node/', 'koa2'],
+          'node/basis'
+        ]
+      },
+      {
+        title: 'JavaScript',
+        collapsable: false,
+        children: [
+          'js/basis',
+          'js/closure',
+          'js/vue',
+          'js/vue-jsonp',
+          'js/azure-storage'
+        ]
+      },
+      {
+        title: 'linux',
+        collapsable: false,
+        children: [
+          'linux/crontab'
         ]
       },
       {
@@ -35,22 +54,8 @@ module.exports = {
         children: [
           'life/xian'
         ]
-      },
-      {
-        title: 'linux',
-        collapsable: false,
-        children: [
-          'linux/crontab'
-        ]
-      },
-      {
-        title: 'JavaScript',
-        collapsable: false,
-        children: [
-          'js/basis',
-          'js/vue'
-        ]
       }
+      
     ]
   }
 }
