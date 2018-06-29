@@ -26,6 +26,8 @@ module.exports = {
         title: 'JavaScript',
         collapsable: false,
         children: [
+          'js/made',
+          'js/function',
           'js/the-little-knowledge',
           'js/basis',
           'js/closure',
