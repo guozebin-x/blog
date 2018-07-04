@@ -202,11 +202,11 @@ readyState属性    （所以要监听这个属性的变化）
 4：请求已经完成，且响应已就绪，也就是响应完成了
 　　　
 ```js
-　var request = new XMLHttpRequest();
+　var request = new XMLHttpRequest()
 
-　　　 request.open("GET","get.php");
+　　　 request.open("GET","get.php")
 
-　　　 request.send();
+　　　 request.send()
 
 　　　 request.onreadystatechange = function(){
 
@@ -221,3 +221,57 @@ readyState属性    （所以要监听这个属性的变化）
 
       request.send(null)
 ```
+
+## 跨域
+
+- 浏览器有同源策略，不允许ajax访问其他域接口
+
+- 跨域条件：协议、域名、端口，有一个不同就算跨域
+
+**可以跨域的三个标签**
+
+- \<img src=xxx\>  可以用于打点统计，统计网站可能是其他域
+
+- \<link href=xxx\> 可以使用CDN，CDN的也是其他域
+
+- \<script src=xxx\> 可以使用CDN，可以用于JSONP
+
+**跨域注意事项**
+
+- 所有跨域请求都必须经过信息提供方允许
+
+- 如果未经允许即可获取，那就是浏览器的漏洞
+
+**JSONP**
+
+```js
+window.callback = function (data) {
+  // 跨域得到的信息
+  console.log(data)
+}
+<script scr="http://xxx.xxx.com/api/getJsonp"> // 这个接口返回 callback({name:'evan',age:26})
+```
+
+## 存储
+
+**cookie和storage的区别**
+
+cookie:
+
+- 本身用于客户端和服务端通信
+
+- 但是它有本地存储的功能，于是就被“借用”
+
+- 存储量太小，只有4KB
+
+- 所有的http请求都带着，影响资源获取效率
+
+locationStorage和sessionStorage:
+
+- API简单
+
+- HTML5专门为存储而设计，最大容量5M
+
+- sessionStorage每次浏览器关闭会清空
+
+- **在iOS Safari隐藏模式下，localStorage.getItem会报错，建议统一使用try-catch封装**

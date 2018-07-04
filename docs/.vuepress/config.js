@@ -41,7 +41,8 @@ module.exports = {
         title: 'linux',
         collapsable: false,
         children: [
-          'linux/crontab'
+          'linux/crontab',
+          'linux/git'  
         ]
       },
       {
