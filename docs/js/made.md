@@ -361,3 +361,58 @@ locationStorage和sessionStorage:
 7. 浏览器解析HTML；
 
 8. 浏览器布局渲染；
+
+**浏览器渲染页面的过程**
+
+- 根据HTML结构生成DOM Tree
+
+- 根据CSS生成CSSOM
+
+- 将DOM和CSSOM整合形成RenderTree
+
+- 根据RenderTree开始渲染和展示
+
+- 遇到\<script\>时，会执行并阻塞渲染(js有权利更改DOM Tree)
+
+**`window.onload`和`DOMContentLoaded`**
+
+```js
+window.addEventListener('load', function () {
+  // 页面的全部资源加载完才会执行，包括图片、视频等
+})
+document.addEvantListener('DOMContentLoaded', function () {
+  // DOM 渲染完即可执行，此时图片、视频还可能没有加载完
+})
+```
+
+## 性能
+
+**性能优化**
+
+原则：
+
+- 多使用内存、缓存或者其他方法
+
+- 减少CPU计算、减少网络请求、减少I/O读写
+
+优化：
+
+- 静态资源的压缩合并 
+
+- 静态资源缓存
+
+- 使用CDN让资源加载更快
+
+- 使用SSR后端渲染，数据直接输出到HTML中（像PHP直接就是后端渲染）
+
+- CSS放前面，JS放后面
+
+- 懒加载（图片懒加载、下拉加载更多）
+
+- 减少DOM查询，对DOM查询做缓存
+
+- 减少DOM操作，多个操作尽量合并在一起执行
+
+- 事件节流
+
+- 尽早执行操作（如DOMContentLoaded）
