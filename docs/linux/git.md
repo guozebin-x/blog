@@ -41,6 +41,8 @@
 删除本地分支(先切换到master分支)：git branch -d devel
 
 切换本地分支：git checkout master
+
+merge分支（比如说当前是在master分支,merge之前记得先pull）：git merge dev
 ```
 
 ## Git Flow

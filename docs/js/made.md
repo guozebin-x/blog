@@ -275,3 +275,89 @@ locationStorage和sessionStorage:
 - sessionStorage每次浏览器关闭会清空
 
 - **在iOS Safari隐藏模式下，localStorage.getItem会报错，建议统一使用try-catch封装**
+
+## 架构
+
+**IDE**
+
+- webstorm
+
+- sublime
+
+- vscode（我用的这个）
+
+- atom
+
+**代码版本管理**
+
+- Git
+
+**模块化**
+
+不使用模块化，那么就要把一堆js文件依次罗列，还要注意先后顺序，因为会有依赖关系，这些代码中的函数必须是全局变量，才能暴露给使用方。容易造成变量污染。
+
+**AMD**
+
+- 工具:`require.js`
+
+- 全局定义一个`define`函数 类似export
+
+- 全局定义一个`require`函数 类似import
+
+- 依赖JS会自动、异步加载
+
+**CommonJS**
+
+- nodejs模块化规范，现在被大量用于前端
+
+- 前端开发依赖的插件和库，都可以从npm中获取
+
+- CommonJS不会异步加载JS,而是同步一次性加载出来
+
+**AMD和CommonJS的使用场景**
+
+- 需要异步加载js,使用AMD
+
+- 使用了npm之后，建议使用CommonJS
+
+**构建工具**
+
+- webpack
+
+- 代码的合并和压缩，对模块化的代码进行打包
+
+**上线和回滚**
+
+上线：
+
+- 将测试完成的代码提交到git版本库的master分支
+
+- 将当期服务器的代码全部打包并记录版本号，备份
+
+- 将master分支的代码提交覆盖到线上服务器，生成新的版本号
+
+回滚：
+
+- 将当期服务器的代码打包并记录版本号，备份
+
+- 将备份的上一个版本号解压，覆盖到线上服务器，并生成新的版本号
+
+## 运行
+
+[**输入URL到页面加载完毕发生了什么**](https://mp.weixin.qq.com/s?__biz=MzU5OTAxNzA4NA%3D%3D&mid=2247483791&idx=1&sn=f80ff124aef6c25ba56ab33dc8174729&scene=45#wechat_redirect)
+
+1. DNS域名解析；
+
+2. 建立TCP连接；
+
+3. 发送HTTP请求；
+
+4. 服务器处理请求；
+
+5. 返回响应结果；
+
+6. 关闭TCP连接；
+
+7. 浏览器解析HTML；
+
+8. 浏览器布局渲染；

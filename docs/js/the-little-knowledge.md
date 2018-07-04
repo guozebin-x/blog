@@ -27,3 +27,17 @@ console.timeEnd('testForEach');
 
 // testForEach: 13636.634ms (直接显示在控制台,运行时间)
 ```
+
+## 本地启服务
+
+```
+sudo npm i http-server -g // 全局安装
+```
+
+在`/usr/loacl/bin`下，有了http-server命令，软连接hs
+
+```
+hs -p 8881 // 自定义端口
+```
+
+可以启动一个本地服务，只能放html静态文件
