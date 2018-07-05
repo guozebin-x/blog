@@ -24,7 +24,7 @@ Room\m\ate
 
 4. 同化
 
-<img :src="$withBase('/assets/assimilation.jpeg')" >
+<img :src="$withBase('/assets/assimilation.png')" >
 
 5. 美式浊化
 
@@ -32,3 +32,6 @@ Room\m\ate
 /t/ -> /d/
 water
 ```
+## 构词法
+
+**（前缀）+词根+（后缀）= 构词法**
