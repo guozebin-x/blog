@@ -11,6 +11,10 @@ module.exports = {
     ],
     serviceWorker: true,
     nav: [
+      {
+        text: '关于',
+        link: '/about/'
+      },
       { text: 'GitHub', link: 'https://github.com/vanoneang' }
     ],
     sidebar: [
