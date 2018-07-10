@@ -38,7 +38,8 @@ module.exports = {
           'js/async',
           'js/vue',
           'js/vue-jsonp',
-          'js/azure-storage'
+          'js/azure-storage',
+          'js/webpack'
         ]
       },
       {
