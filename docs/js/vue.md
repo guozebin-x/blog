@@ -36,6 +36,8 @@ vue实例挂载，最终都要通过render函数来执行，如果采用`runtime
   Sub.prototype.constructor = Sub
 ```
 
+`Super`完全继承了`Vue`的各种属性，所以`Vue.extend`也可以用组件`componentName.extent`来表示。
+
 这里面有一个缓存方法，把构造函数进行了缓存，对于拥有相同父类的子组件，就不重复构造了。完了之后，通过`new VNode`实例化一个`vnode`并返回。
 
 

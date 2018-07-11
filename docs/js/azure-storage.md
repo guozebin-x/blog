@@ -1,4 +1,4 @@
-# Azure Storage(node版)
+# Azure Storage
 
 ## 什么是Azure Storage 
 

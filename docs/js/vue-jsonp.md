@@ -1,4 +1,4 @@
-# vue中应用jsonp
+# vue中jsonp
 
 > 推荐想学Vue的同学看下黄轶老师的[音乐App课程][1]
 

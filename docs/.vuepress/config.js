@@ -19,14 +19,6 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: 'node',
-        collapsable: false,
-        children: [
-          ['node/', 'koa2'],
-          'node/basis'
-        ]
-      },
-      {
         title: 'JavaScript',
         collapsable: false,
         children: [
@@ -43,24 +35,32 @@ module.exports = {
         ]
       },
       {
-        title: 'linux',
-        collapsable: false,
+        title: 'NodeJS',
+        collapsable: true,
+        children: [
+          ['node/', 'koa2'],
+          'node/basis'
+        ]
+      },
+      {
+        title: 'Linux',
+        collapsable: true,
         children: [
           'linux/crontab',
-          'linux/git'  
+          'linux/git',
+          'linux/command'
         ]
       },
       {
-        title: 'Reading notes',
-        collapsable: false,
+        title: '读书笔记',
+        collapsable: true,
         children: [
-          ['books/', '前端工程化简史'],
-          'books/cache'
+          ['books/', '前端工程化']
         ]
       },
       {
-        title: '生活',
-        collapsable: false,
+        title: '生活日记',
+        collapsable: true,
         children: [
           'life/english',
           'life/xian'
