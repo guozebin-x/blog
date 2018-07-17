@@ -38,7 +38,9 @@
 
 切换远程分支并创建到本地：git checkout -b devel origin/devel
 
-删除本地分支(先切换到master分支)：git branch -d devel
+删除本地分支(先切换到master分支)：git branch -D devel
+
+删除远端分支: git push origin --delete devel
 
 切换本地分支：git checkout master
 
