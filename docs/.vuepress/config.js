@@ -63,7 +63,8 @@ module.exports = {
         collapsable: true,
         children: [
           'life/english',
-          'life/xian'
+          'life/xian',
+          'life/resume'
         ]
       }
       
