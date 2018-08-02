@@ -70,3 +70,13 @@ npm install --save-dev pre-commit
   ]
 }
 ```
+
+## 监听本地构建
+
+**如果有项目变更，自动重启,相当于fs.watch**
+
+```
+npm i supervisor -g
+
+supervisor app.js
+```
