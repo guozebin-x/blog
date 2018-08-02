@@ -41,3 +41,32 @@ hs -p 8881 // 自定义端口
 ```
 
 可以启动一个本地服务，只能放html静态文件
+
+## pre-commit
+
+**代码质量**
+
+```
+npm install --save-dev pre-commit
+```
+
+在package.json中添加：
+
+```json
+{
+  "name": "437464d0899504fb6b7b",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: I SHOULD FAIL LOLOLOLOLOL \" && exit 1",
+    "foo": "echo \"fooo\" && exit 0",
+    "bar": "echo \"bar\" && exit 0"
+  },
+  "pre-commit": [
+    "foo",
+    "bar",
+    "test"
+  ]
+}
+```
