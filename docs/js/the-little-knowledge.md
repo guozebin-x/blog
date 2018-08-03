@@ -93,3 +93,15 @@ doSomething()
     console.log(err)
   })
 ```
+
+## 公网ip
+
+1. PING出来的是入口IP，有可能是cdn的
+
+2. ssh登录的可能是vpn的内容ip
+
+3. 真正的出口ip：执行
+
+```
+curl ip.cn
+```
