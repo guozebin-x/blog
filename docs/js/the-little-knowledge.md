@@ -80,3 +80,16 @@ npm i supervisor -g
 
 supervisor app.js
 ```
+
+## Promise使用
+
+墙裂建议在所有队列最后都加上.catch(),以避免漏掉错误处理造成意想不到的问题
+
+```js
+doSomething()
+  .doAnotherThing()
+  .doMoreThing()
+  .catch( err => {
+    console.log(err)
+  })
+```
