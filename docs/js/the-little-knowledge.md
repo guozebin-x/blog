@@ -105,3 +105,7 @@ doSomething()
 ```
 curl ip.cn
 ```
+
+## PHP,curl,post请求传参
+
+就算没有参数，CURLOPT_POSTFIELDS也要随便写点什么，否则报错400
