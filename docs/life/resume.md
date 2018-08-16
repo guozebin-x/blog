@@ -37,4 +37,8 @@
 
 在七月老师商城的基础上，进行的修改，做了个后台。
 
+**[刚上线的一个小活动(移动端)](https://wx.pg.com.cn/pampers-pants-jas/#/?source=10)**
+
+
+
 

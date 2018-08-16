@@ -49,3 +49,17 @@ sudo port unload mariadb-10.1-server
 ```
 sudo port search php71 | more
 ```
+
+## npm全局安装包路径
+
+```
+/usr/local/lib/node_modules
+```
+
+## 全局命令
+
+```
+/usr/local/bin 用户放置自己的可执行程序的地方,不会被系统升级而覆盖同名文件。
+
+/usr/bin 下面的都是系统预装的可执行程序，会随着系统升级而改变
+```
