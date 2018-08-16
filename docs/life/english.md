@@ -44,3 +44,11 @@ I love this can-do attitude!
 
 我就喜欢这态度！
 
+- 0816
+
+```
+come on 常用于 拜托
+
+加油：you can do this! / Keep going! / Good job.
+```
+
