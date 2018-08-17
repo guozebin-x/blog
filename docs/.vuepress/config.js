@@ -22,6 +22,8 @@ module.exports = {
         title: 'JavaScript',
         collapsable: false,
         children: [
+          'js/mobile-adaptive',
+          'js/http',
           'js/made',
           'js/function',
           'js/the-little-knowledge',
