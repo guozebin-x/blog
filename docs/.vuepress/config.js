@@ -48,6 +48,7 @@ module.exports = {
         title: 'Linux',
         collapsable: true,
         children: [
+          'linux/nginx',
           'linux/crontab',
           'linux/git',
           'linux/command'
