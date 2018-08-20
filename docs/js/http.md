@@ -2,6 +2,8 @@
 
 ## OSI七层模型
 
+<img :src="$withBase('/assets/TCPIP.png')" >
+
 1. **物理层**
 
 建立、维护、断开物理连接(定义物理设备如何传输数据)
@@ -18,7 +20,7 @@
 
 定义传输数据的协议端口号，以及流控和差错校验
 
-协议有TCP和UDP，数据包一旦离开网卡即进入网络传输层，向用户提供可靠的端到端（End-to-End）服务
+协议有TCP(传输控制协议)和UDP（用户数据报协议，不可靠），数据包一旦离开网卡即进入网络传输层，向用户提供可靠的端到端（End-to-End）服务
 
 5. **会话层**
 
@@ -36,6 +38,8 @@
 屏蔽网络传输相关细节
 
 协议有HTTP/FTP/SMTP/DNS/HTTPS/POP3
+
+
 
 ## HTTP发展历史
 
@@ -77,11 +81,19 @@
 
 在`TCP connection`上面是可以发送多个请求的。
 
-### URI(统一资源标识符)
+
+
+**URI(统一资源标识符)**
 
 用来唯一标识互联网上的信息资源
 
 包含URL（统一资源定位器）和URN(永久统一资源定位符：在资源被移动后还能找到)
+
+**长链接**
+
+Chrome的并发限制是6条，当一个页面有6个以上的请求发送时，会创建6个长链接`TCP connection`，在控制面板`network`的`Waterfall`中可以看出。
+
+如果一个页面中有很多图片，下面的往往加载很慢，就是因为并发只有6个，后面的需要等待前面的执行完毕。同时，会复用前面的TCP连接`Connection: keep-alive`
 
 ## HTTP/1.1中的状态码
 
@@ -121,7 +133,7 @@ origin的提出，本身就是在HTML5中跨域操作所引入的。
 - Cache-Control：指定缓存响应机制（public/private/no-cache）
 
   private是指，只允许发送请求的域名进行缓存，其他代理的不允许
-  
+
 - User-Agent：用户信息
 
 - User-Agent：用户信息
@@ -130,7 +142,30 @@ origin的提出，本身就是在HTML5中跨域操作所引入的。
 
 - Access-Control-Allow-Origin：允许特定的域名来访问（跨域使用）
 
-- Last-Modified：请求资源的最后响应时间
+- Last-Modified：请求资源的最后响应时间，在服务端设置后，对应的在`Request Headers`中，会携带`If-Modified-Since`头
+
+- Etag：通过数据签名，进行是否缓存验证，在服务端设置后，对应的在`Request Headers`中，会携带`If-None-Match`头
+
+```js
+const etag = req.headers['if-none-match']
+
+if(etag === 'etag') {
+  res.writeHead(304, {
+    'Cache-Control': 'max-age=2000, no-cache',
+    'Last-Modified': reqTime,
+    'Etag': 'etag'
+  }) 
+  res.end('')
+} else {
+  res.writeHead(200, {
+    'Cache-Control': 'max-age=2000, no-cache',
+    'Last-Modified': reqTime,
+    'Etag': 'etag'
+  })
+  res.end('res ok!')
+}
+
+```
 
 ## CORS跨域请求
 
@@ -173,3 +208,33 @@ app.all('*', function(req, res, next) {
 
 
 2. 通过`jsonp`来实现，其原理就是`script`没有同源限制
+
+
+## Cookie和Session
+
+**cookie**
+
+- 通过Set-Cookie设置
+
+```js
+http.createServer((req, res) => {
+  const html = fs.readFileSync('test.html', 'utf8')
+  res.writeHead(200, {
+    'Content-Type': 'text/html',
+    'Set-Cookie': ['id=123; max-age=600','name=evan; HttpOnly']
+  })
+  res.end(html) 
+}).listen(8888)
+```
+
+- 下次请求会自动带上
+
+- 键值对，可以设置多个
+
+**cookie的属性**
+
+- max-age和expire设置过期时间
+
+- Secure只在https的时候发送
+
+- HttpOnly无法通过document.cookie访问
