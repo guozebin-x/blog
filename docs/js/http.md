@@ -4,6 +4,8 @@
 
 <img :src="$withBase('/assets/TCPIP.png')" >
 
+OSI模型是在协议开发前设计的，具有通用性。TCP/IP是先有协议集然后建立模型，不适用于非TCP/IP网络。
+
 1. **物理层**
 
 建立、维护、断开物理连接(定义物理设备如何传输数据)
@@ -166,6 +168,23 @@ if(etag === 'etag') {
 }
 
 ```
+## HTTP协议的工作特点和工作原理
+
+**工作特点**
+
+- 基于B/S模式
+
+- 通信开销小，简单快速，传输成本底
+
+- 使用灵活、可使用超文本传输协议
+
+- 节省传输时间
+
+- 无状态
+
+**工作原理**
+
+客户端发送请求到服务器，创建一个TCP连接，指定端口号，默认为80，连接到服务器，服务器监听浏览器请求，一旦监听到客户端请求，分析请求类型后，服务器会向客户端返回状态信息和数据内容。
 
 ## CORS跨域请求
 
@@ -238,3 +257,24 @@ http.createServer((req, res) => {
 - Secure只在https的时候发送
 
 - HttpOnly无法通过document.cookie访问
+
+## Redirect
+
+```js
+http.createServer((req, res) => {
+  if(req.url === '/'){
+    res.writeHead(302, {  // 302 临时跳转，每次都经过'/'  301 永久重定向（慎用）
+      'Location': '/newroute'
+    })
+
+    res.end('')
+  }
+
+  if(req.url === '/newroute'){
+    res.writeHead(200, {
+      'Content-Type': 'text/html'
+    })
+    res.end('<div>this is redirect content</div>')
+  }
+})
+```
