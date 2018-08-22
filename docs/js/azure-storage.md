@@ -12,7 +12,7 @@
 
 [下载地址][2]
 
-## Blob操作
+## [Blob操作](https://docs.azure.cn/zh-cn/storage/blobs/storage-blobs-introduction)
 
 一个 Blob 就代表一个文件。
 
@@ -30,7 +30,10 @@
 var blobService = azure.createBlobService(accountName, accountKey, host);
 ```
 
-二、README中的API是给node命令行用的，如果上传接口要用浏览器执行，不能直接
+二、引入`AzureStorage`类，一种比较简单的方法是直接把[azure-storage.blob.js](https://pan.baidu.com/s/1QQFNH9NTO1aTQXv9ih1_Ng)，放到本地，在`index.html`中引入
+
+
+三、README中的API是给node命令行用的，如果上传接口要用浏览器执行，不能直接
 
 ```js
 var azure = require('azure-storage');

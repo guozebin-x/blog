@@ -7,7 +7,9 @@ vue首先是一个Function，es5中通过方法声明一个类，需要new这个
 这里没有通过ES6的class来定义，原因就是js是动态类型语言，通过方法，我们可以随意挂载方法到它的原型上，这样一类方法用一个文件来编写，就把代码解耦了，做到了模块化拆分。
 
 
-## vue实例挂载
+## vue的数据驱动
+
+vue是怎么通过`data`的赋值就实现了DOM的渲染呢？并没有像jq那样直接操作dom啊？下面就是答案：
 
 在Vue中，我们通过`$mount`实例方法来挂载`vm`。
 
@@ -21,7 +23,9 @@ vue首先是一个Function，es5中通过方法声明一个类，需要new这个
 
 第二步，通过`render`中的`createElement`创建组件的`VNode`（虚拟DOM）
 
-第三步，走`vm._update`，把虚拟DOM转换成真正的DOM节点。
+第三步，走`vm._update`调用`__patch__`，把虚拟DOM转换成真正的DOM节点。
+
+`update`的调用时机有两个，一个是首次渲染，一个是数据更新的时候，通过`VNODE Tree`调用js原生的`appendChild`方法，调用`insert`方法把`DOM`插入到父节点，进行递归调用，把虚拟dom和真实dom映射到一起，从而实现DOM的真正渲染。
 
 ## runtime-only和compiler and runtime
 
