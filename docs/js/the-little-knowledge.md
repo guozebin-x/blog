@@ -46,6 +46,8 @@ hs -p 8881 // 自定义端口
 
 **代码质量**
 
+1. 实现方式一
+
 ```
 npm install --save-dev pre-commit
 ```
@@ -70,6 +72,17 @@ npm install --save-dev pre-commit
   ]
 }
 ```
+
+2. 实现方式二
+
+```sh
+npm i husky -D
+
+"lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
+"precommit": "npm run lint-fix",
+```
+
+ps: git init后实现
 
 ## 监听本地构建
 

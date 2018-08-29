@@ -52,13 +52,13 @@
 
 - 天生的模块化
 
-## 模块化
+## 模块化开发
 
-**JS模块化**
+### 1. JS模块化
 
-- 命名空间
+- **命名空间（上古年代）**
 
-库名.类别名.方法名 
+库名.类别名.方法名 （现在看来就非常不方便了）
 
 ```js
 var NameSpace = {}
@@ -69,9 +69,9 @@ NameSpace.type.method = function () {
 
 }
 ```
-- CommonJS
+- **CommonJS（node服务端使用）**
 
-```
+```js
  Modules/1.1.1
 
  一个文件为一个模块
@@ -85,50 +85,123 @@ NameSpace.type.method = function () {
 
 - AMD/CMD (浏览器中使用)
 
-```
-Async Module Definition
+```js
+AMD:依赖前置，提前执行(Async Module Definition)
 
 使用define定义模块
 
 使用require加载模块
 
-RequireJS
+代表作：RequireJS # 这个库采用AMD规范
 
-AMD:`依赖前置，提前执行(CMD:尽可能懒加载)
+define(
+  // 模块名
+  "alpha",
+  // 依赖
+  ["require", "exports", "beta"],
+  // 模块输出
+  function (require, exports, beta) {
+    exports.verb = function() {
+      return beta.verb()
+    }
+  }
+)
+
+CMD:尽可能懒加载(Common Module Definition)
+
+一个文件为一个模块
+
+使用define来定义一个模块
+
+使用require来加载一个模块
+
+代表作：SeaJS
+
+// 所有模块都通过define来定义
+define(function(require, exports, module) {
+  // 通过require引入依赖
+  var $ = require('jquery')
+  var Spinning = require('./spinning')
+
+  // 通过module.exports提供整个接口
+  module.exports = ...
+})
+
+UMD:通用解决防范
+
+三个步骤：
+  判断是否支持AMD
+  判断是否支持CommonJS
+  如果都没有，使用全局变量
 ```
 
-- ESM(现在用的)
+- ESM(现在用的,webpack原生支持)
 
-```
+```js
 EcmaScript  Module
 
 一个文件一个模块
 
-export / import
+import:
+
+import theDefault, {named1, named2} from 'src/mylib'
+import {named1 as myNamed1, named2} from 'src/mylib'
+import * as mylib form 'src/mylib'
+import 'src/mylib' // 只加载
+
+export:
+
+export const myVar1 = ''
+export function myFunc() { }
+export class MyClass { }
+
+export default 123
+export default function (x) {
+  return x
+}
+export default x => x
+export default class {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+}
 ```
 
-**CSS模块化**
+### CSS模块化
+
+css设计模式 ：OOCSS（面向对象）、原子css、属性css、BEM（Block Element Modifier）
 
 ## 安装webpack
 
-```
+1. 全局安装
+
+```sh
  npm install webpack -g
 ```
 
 然后，会报错，显示没有权限
 
-```
+```sh
 sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 ```
 更改权限后，再次安装
 
-```
+```sh
 npm install webpack-cli -g
+```
+
+2. 项目安装
+
+```sh
+npm init
+
+npm i webpack -D
 ```
 
 ## 版本更迭
 
-**Webpack V1**
+**1. Webpack V1**(2014.2)
 
 - 编译、打包 
 
@@ -138,9 +211,9 @@ npm install webpack-cli -g
 
 - 文件处理（loader、plugin）
 
-**Webpack V2**
+**2. Webpack V2**(2017.1)
 
-- Tree Shaking(会删除引入的，但并没有使用的代码)
+- Tree Shaking(会删除引入的，但并没有使用的代码，打包的代码体积更好)
 
 - ES module
 
@@ -148,23 +221,23 @@ npm install webpack-cli -g
 
 - 新的文档
 
-**Webpack V3**
+**3. Webpack V3**(2017.6)
 
 - Scope Hoisting（作用域提升）
 
-打包以后代码性能的提升：
+作用：打包以后代码性能的提升
 
-以前的版本，是把每个模块单独包裹在一个函数的闭包中，实现模块系统，闭包越多对浏览器性能影响越大
-
-V3：
-
-将代码的模块的作用域提到单一的作用域中，保证浏览器运行速度
+原理：以前的版本，是把每个模块单独包裹在一个函数的闭包中，实现模块系统，闭包越多对浏览器性能影响越大；在v3版本总，将代码的模块的作用域提到单一的作用域中，保证浏览器运行速度
 
 - Magic Comments(配合动态import使用，指定webpack可以懒加载这段代码，打包后不知道叫什么名字)
 
 可以指定打包后的文件名叫什么/chunk名叫什么
 
-[**Webpack V4**](https://segmentfault.com/a/1190000013608316)
+**4. Webpack V4**(2018.2)
+
+[Webpack 4.0 发布:有哪些新特性？（译）](https://segmentfault.com/a/1190000013608316)
+
+[Webpack 4 不完全迁移指北](https://github.com/dwqs/blog/issues/60)
 
 ## 核心概念
 
@@ -178,7 +251,8 @@ V3：
 ```js
 module.exports = {
   entry: {
-    index: 'index.js'
+    index: 'index.js', // 这个key可以表示为一个独特的chunk
+    vendor: 'vendor.js'
   }
 } 
 ```
@@ -202,9 +276,9 @@ module.exports = {
 
 ### Loaders
 
-处理文件
+处理文件(除js文件外，v4好像默认的文件更多了)
 
-转化为模块
+转化为js的一个模块，引入进来
 
 ```js
 module.exports = {
@@ -248,7 +322,13 @@ const webpack = require('webpack')
 
 module.exports = {
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(), // 混淆和压缩代码
+    new HtmlWebpackPlugin({
+      chunks: ['vant-docs'],
+      template: 'docs/src/index.tpl',
+      filename: 'index.html',
+      inject: true
+    })
   ]
 }
 ```
@@ -257,41 +337,53 @@ module.exports = {
 
 优化相关：
 
-CommonsChunkPlugin(4中已被移除):用于建立一个独立文件(又称作 chunk)的功能
+`CommonsChunkPlugin`(4中已被移除):用于建立一个独立文件(又称作 chunk)的功能
 
 ```js
 new webpack.optimize.CommonsChunkPlugin(options)
 ```
 
-UglifyjsWebpackPlugin:能够删除未引用代码(dead code)的压缩工具(minifier)
+`UglifyjsWebpackPlugin`:能够删除未引用代码(dead code)的压缩工具(minifier)，还可以生成`source-map`
 
 功能相关：
 
-ExtractTextWebpackPlugin:将所有的入口 chunk(entry chunks)中引用的 *.css，移动到独立分离的 CSS 文件。因此，你的样式将不再内嵌到 JS bundle 中，而是会放到一个单独的 CSS 文件（即 styles.css）当中。
+`ExtractTextWebpackPlugin`:将所有的入口 chunk(entry chunks)中引用的 *.css，移动到独立分离的 CSS 文件。因此，你的样式将不再内嵌到 JS bundle 中，而是会放到一个单独的 CSS 文件（即 styles.css）当中。
 
-HtmlWebpackPlugin:让插件为你生成一个HTML文件
+`HtmlWebpackPlugin`:让插件为你生成一个HTML文件
 
-模块热替换插件(HotModuleReplacementPlugin)
+模块热替换插件(`HotModuleReplacementPlugin`)
 
-CopyWebpackPlugin
+`CopyWebpackPlugin`:拷贝文件
+
+### 几个名词
+
+Chunk: 代码块，比如说懒加载的某个代码块、公共的代码块
+
+Bundle: 打包过的
+
+Module: 模块，比如图片处理完可以叫一个模块，css处理后可以叫一个模块
 
 ## 使用webpack
 
-- webpack命令
+1. webpack命令
 
-```
+```sh
+webpack -h
+
+webpack -v
+
 webpack <entry> <output>
 ```
 
-- webpack配置
+2. webpack配置
 
-```
+```sh
 webpack --config webpack.conf.dev.js(自定义的配置文件名)
 ```
 
-- 第三方脚手架
+3.  第三方脚手架
 
-```
+```sh
 vue-cli
 
 angular-cli
@@ -299,7 +391,7 @@ angular-cli
 react-starter
 ```
 
-- 编译ES6/7
+例子： 编译ES6/7
 
 ```js
 1. npm init

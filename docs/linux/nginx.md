@@ -10,6 +10,8 @@ nginx -s stop // 停止
 nginx -s reload // 重启
 
 nginx -t // 检查配置状态
+
+/opt/local/var/log/nginx  // 日志
 ```
 
 ## Nginx特性
