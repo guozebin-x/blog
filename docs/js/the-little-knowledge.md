@@ -78,8 +78,8 @@ npm install --save-dev pre-commit
 ```sh
 npm i husky -D
 
-"lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
-"precommit": "npm run lint-fix",
+"lint": "eslint  --ext .js --ext .jsx --ext .vue client/",
+"precommit": "npm run lint",
 ```
 
 ps: git init后实现
@@ -122,3 +122,18 @@ curl ip.cn
 ## PHP,curl,post请求传参
 
 就算没有参数，CURLOPT_POSTFIELDS也要随便写点什么，否则报错400
+
+## Webpack Bundle Analyzer
+
+
+```sh
+npm run build --report # vue-cli
+```
+
+## npm发布
+
+```sh
+npm login
+
+npm publish
+```

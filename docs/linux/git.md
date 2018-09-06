@@ -38,13 +38,24 @@
 
 切换远程分支并创建到本地：git checkout -b devel origin/devel
 
+本地创建分支，并推送到远端：
+git checkout -B devel
+git push origin devel:devel
+
 删除本地分支(先切换到master分支)：git branch -D devel
 
 删除远端分支: git push origin --delete devel
 
 切换本地分支：git checkout master
 
-merge分支（比如说当前是在master分支,merge之前记得先pull）：git merge dev
+
+merge分支:
+
+1. 首先确保开发分支commit、push处理完毕
+2. 切换到master，执行git pull，确保是最新代码
+3. 切换到开发分支,为了保险起见，你可以在merge前先建一个备份分支
+4. 执行git rebase master，如果有冲突，解决掉
+4. 申请merge request，等待管理员同意
 ```
 
 ## Git Flow

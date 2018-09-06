@@ -10,6 +10,10 @@ module.exports = {
         link: '/js/',
       },
       {
+        text: 'NODE',
+        link: '/node/'
+      },
+      {
         text: 'LINUX',
         link: '/linux/',
       },
@@ -29,15 +33,12 @@ module.exports = {
           title: 'JavaScript',
           collapsable: false,
           children: [
-            '',
             'mobile-adaptive',
             'http',
-            'made',
+            'basic-knowledge',
+            'senior-knowledge',
             'function',
             'the-little-knowledge',
-            'basis',
-            'closure',
-            'async',
             'vue',
             'vue-jsonp',
             'azure-storage',
@@ -45,12 +46,21 @@ module.exports = {
           ]
         }
       ], 
+      '/node/': [
+        {
+          title: 'NodeJS',
+          collapsable: false,
+          children: [
+            'basis',
+            'koa'
+          ]
+        }
+      ],
       '/linux/':[
         {
           title: 'Linux',
-          collapsable: true,
+          collapsable: false,
           children: [
-            '',
             'nginx',
             'crontab',
             'git'

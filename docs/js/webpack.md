@@ -1,5 +1,7 @@
 # webpack
 
+[[toc]]
+
 ## [中文文档](https://webpack.docschina.org/concepts/)
 
 ## 为什么需要构建
@@ -53,6 +55,8 @@
 - 天生的模块化
 
 ## 模块化开发
+
+`babel`编译ES6语法，模块化可用`webpack`和`rollup`
 
 ### 1. JS模块化
 
@@ -443,3 +447,33 @@ console.log('new Set(arr2)', new Set(arr2))
 
 6. npm run build
 ```
+
+## 打包速度优化
+
+### 分开vendor和app
+
+减少第三方包的打包
+
+### 压缩和混淆
+
+`UglifyJsPlugin`传入`parallel: true`采用并行方式打包压缩
+
+```js
+  new UglifyJsPlugin({
+    sourceMap: true
+  })
+```
+
+### HappyPack
+
+### 减少babel的编译时间
+
+减少`resolve`
+
+Deltool：去除sourceMap
+
+cache-loader
+
+升级node
+
+升级webpack

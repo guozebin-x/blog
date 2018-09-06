@@ -27,6 +27,10 @@ vue是怎么通过`data`的赋值就实现了DOM的渲染呢？并没有像jq那
 
 `update`的调用时机有两个，一个是首次渲染，一个是数据更新的时候，通过`VNODE Tree`调用js原生的`appendChild`方法，调用`insert`方法把`DOM`插入到父节点，进行递归调用，把虚拟dom和真实dom映射到一起，从而实现DOM的真正渲染。
 
+`vdom`的真正意义是为了实现跨平台，服务端渲染，以及提供一个性能还算不错 `Dom` 更新策略
+`vdom` 让整个 `mvvm` 框架灵活了起来，性能不是最重要的
+好的 `diff` 算法只是 `vdom` 实现层面的优化，而并不代表 `vdom` 本身是为了性能优化
+
 ## runtime-only和compiler and runtime
 
 vue实例挂载，最终都要通过render函数来执行，如果采用`runtime-only`模式，要直接写render函数，而采用`compiler`组合的模式，则可以书写`template`。通过`wm._update`方法传入`render`来渲染`Watcher`。
