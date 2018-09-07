@@ -387,7 +387,7 @@ console.log('d')
 
 轮询的意思就是，一直监听着异步队列，如果有拿进来的，就立刻放到主进程中执行，100ms放入异步队列？1s放入异步队列？
 
-### JQuery的Deferred
+### JQuery的Deferred && Promise
 
 在早期的jq中提出，后来演变为es6的promise规范 
 
@@ -401,4 +401,80 @@ ajax.then(()=>{
   console.log('fail')
 })
 ```
+
+promise的reject可通过catch来捕获 
  
+promise的串联，链式执行，要return第二个Promise实例
+
+### virtual dom
+
+**vdom是什么？为何会存在vdom？**
+
+- 用JS模拟DOM结构
+
+- DOM变化的对比，放在JS层来做(图灵完备语言：能实现各种逻辑的语言)
+
+- 提高重绘性能
+
+首先，DOM的渲染是最耗费性能的，js运行效率是非常高的。
+
+jQuery操作dom，会因为个别数据的变化，把全部的dom进行重新渲染。
+
+**vdom如何应用，核心api是什么？**
+
+[`snabbdom`](https://github.com/snabbdom/snabbdom)
+
+```js
+var snabbdom = require('snabbdom');
+var patch = snabbdom.init([ // Init patch function with chosen modules
+  require('snabbdom/modules/class').default, // makes it easy to toggle classes
+  require('snabbdom/modules/props').default, // for setting properties on DOM elements
+  require('snabbdom/modules/style').default, // handles styling on elements with support for animations
+  require('snabbdom/modules/eventlisteners').default, // attaches event listeners
+]);
+var h = require('snabbdom/h').default; // helper function for creating vnodes
+
+var container = document.getElementById('container');
+
+var vnode = h('div#container.two.classes', {on: {click: someFn}}, [ // 节点，第三个参数，可以是字符串，也可以是个数组
+  h('span', {style: {fontWeight: 'bold'}}, 'This is bold'),
+  ' and this is just normal text',
+  h('a', {props: {href: '/foo'}}, 'I\'ll take you places!')
+]);
+// 在第一渲染的时候，把所有的数据源全部渲染出来，vnode填充到container（空的）中
+patch(container, vnode);
+
+var newVnode = h('div#container.two.classes', {on: {click: anotherEventHandler}}, [
+  h('span', {style: {fontWeight: 'normal', fontStyle: 'italic'}}, 'This is now italic type'),
+  ' and this is still just normal text',
+  h('a', {props: {href: '/bar'}}, 'I\'ll take you places!')
+]);
+// diff变更过的vnode，只渲染修改的部分DOM
+patch(vnode, newVnode); 
+```
+
+核心api-`h`、`patch`
+
+**介绍一下diff算法**
+
+- diff算法非常复杂，实现难度很大，源码量很大
+
+`vdom`为何使用diff算法？
+
+- DOM操作是‘昂贵的’，因此尽量减少DOM操作
+
+- 找出本次DOM必须更新的节点来更新，其他的不更新
+
+- 这个“找出”的过程，就需要diff算法
+
+**diff实现过程**
+
+- diff算法，是Linux的基础命令
+
+- patch(container, vnode) 那么，初次渲染也就是把vnode到真实dom的渲染了
+
+<img :src="$withBase('/assets/vnode.png')" />
+
+- patch(vnode, newVnode)
+
+<img :src="$withBase('/assets/newvnode.png')" />
