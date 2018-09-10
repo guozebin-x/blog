@@ -478,3 +478,21 @@ patch(vnode, newVnode);
 - patch(vnode, newVnode)
 
 <img :src="$withBase('/assets/newvnode.png')" />
+
+## MVVM
+
+### 使用jQuery和使用框架的区别
+
+- 数据和视图的分离，解耦（开放封闭原则）
+
+- 以数据驱动视图，只关心数据变化，DOM操作被封装
+
+### 对MVVM的理解
+
+- MVC 
+
+- MVVM（Model View ViewModel）：把后端的MVC理念，进行微创新
+
+view通过事件驱动，修改数据，数据通过双向绑定，改变视图
+
+ViewModel:用来联系View和Model

@@ -54,3 +54,8 @@ come on 常用于 拜托
 加油：you can do this! / Keep going! / Good job.
 ```
 
+- 0909
+```
+Proper wine for proper heroes!   美酒配英雄
+```
+

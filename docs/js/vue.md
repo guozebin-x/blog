@@ -1,5 +1,121 @@
 # vue源码理解
 
+## MVVM的三要素
+
+ - 响应式：vue如何监听到`data`的每个`属性变化`？
+
+ - 模板引擎：vue的`模板`如何被`解析`，指令如何处理？
+
+ - 渲染：vue的`模板`如何被`渲染`成`html`？以及渲染过程
+
+## vue中如何实现响应式？
+
+- 什么是响应式
+
+    1. 修改`data`属性后，vue立刻监听到
+
+    2. data属性被代理到vm上
+
+- Object.defineProperty
+
+```js
+var obj = {}
+var _name = 'evan'
+
+Object.defineProperty(obj, 'name', {
+  get: function() {
+    console.log('get', _name)
+    return _name
+  },
+  set: function (newVal) {
+    console.log('set', newVal)
+    _name = newVal
+  }
+})
+
+console.log(obj._name) // 可以监听到
+obj._name = 'wang'     // 可以监听到
+```
+
+> 所以，vue中数据改变，视图就改变，其核心就是通过`Object.defineProperty`实时监听到数据的变化
+
+- 模拟
+
+```js
+var vm = {}
+var data = {
+  name: 'evan',
+  age: 25
+}
+
+var key,value
+for (key in data) {
+  (function (key) {
+    Object.defineProperty(vm, key, {
+      get: function () {
+        console.log('get', data[key]) // 监听
+        return data[key]
+      },
+      set: function (newVal) {
+        console.log('set', newVal) // 监听
+        data[key] = newVal
+      }
+    })
+  })(key)
+}
+```
+
+## vue中如何解析模板
+
+- 模板是什么？
+
+1. 本质：字符串
+
+2. 有逻辑，如`v-if``v-for`等
+
+3. 与`html`格式很像，但有很大区别
+
+4. 最终还是要转换为`html`来显示
+
+5. 模板最终必须转成JS代码，因为：
+
+    a. 有逻辑（v-if v-for），必须用JS才能实现（图灵完备）
+
+    b. 转换为html渲染页面，必须用JS才能实现
+
+    c. 因此，模板最重要转换成一个JS函数（`render函数`）
+
+- render函数
+
+```html
+<div id="app">
+  <p>{{price}}</p>
+</div>
+```
+
+```js
+with(this){
+  return _c(
+    'div',
+    {
+      attrs: {"id":"app"}
+    },
+    [
+      _c('p', [_v(_s(price))])
+    ]
+  )
+}
+```
+1. 模板中所有信息都包含在了`render`函数中
+
+2. `this`即`vm`
+
+3. `price`即`this.price`即`vm.price`，即`data`中的`price`
+
+4. `_c`即`this._c`即`vm._c`
+
+<img :src="$withBase('/assets/render.png')">
+
 ## 入口
 
 vue首先是一个Function，es5中通过方法声明一个类，需要new这个方法，也就是new Vue()，生成一个实例对象，这个实例对象上有那么多方法哪来的呢？是通过Vue的prototype挂载到原型上。
@@ -47,6 +163,4 @@ vue实例挂载，最终都要通过render函数来执行，如果采用`runtime
 `Super`完全继承了`Vue`的各种属性，所以`Vue.extend`也可以用组件`componentName.extent`来表示。
 
 这里面有一个缓存方法，把构造函数进行了缓存，对于拥有相同父类的子组件，就不重复构造了。完了之后，通过`new VNode`实例化一个`vnode`并返回。
-
-
 
