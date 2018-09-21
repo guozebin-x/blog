@@ -116,6 +116,58 @@ with(this){
 
 <img :src="$withBase('/assets/render.png')">
 
+- render函数执行时返回vnode
+
+a. `updateComponent`t中实现了`vdom`的`path`
+
+b. 页面首次渲染执行`updateComponent`
+
+c. data中每次修改属性，执行`updateComponent`
+
+## vue的整个实现流程
+
+1. **解析模板成`render`函数**
+
+    a.  模板中所有信息都被`render`函数所包含
+
+    b. 模板中用到的`data`中的属性，都变成了JS变量
+
+    c. 模板中的`v-model v-for`都变成了JS逻辑
+
+    d. `render`函数返回`vnode`
+
+2. **响应式开始监听**
+
+    a. vue中数据驱动视图改变，其核心就是通过`Object.defineProperty`实时监听到数据的变化
+
+    b. 同样，通过`Object.defineProperty`，将`data`的属性代理到`vm`上
+
+3. **首次渲染，显示页面，且绑定依赖**
+
+    a. 初次渲染，执行`updateComponent`,执行`vm._render()`
+
+    b. 执行`render`函数，会访问到上一步代理到`vm`上的`data`的属性
+
+    c. 会被响应式的`get`方法监听到
+
+      *因为，data中有很多属性，有些被用到，有些可能不被用到，被用到的走get，不被用到的不会走到get，未走到get中的属性，set的时候我们也无需关心，避免不必要的重复渲染*
+
+    d. 执行`updateComponent`，会走到`vdom`的`patch`方法
+
+    e. `patch`将`vnode`渲染成`DOM`，初次渲染完成
+
+4. **data属性变化，触发`rerender`**
+
+    a. 修改属性，被响应式的`set`监听到
+
+    b. `set`中执行`updateComponent`
+
+    c. `updateComponent`重新执行`vm._render()`
+
+    d. 生成的`vnode`和`preVnode`，通过`patch`进行对比 
+
+    e. 渲染到`html`
+    
 ## 入口
 
 vue首先是一个Function，es5中通过方法声明一个类，需要new这个方法，也就是new Vue()，生成一个实例对象，这个实例对象上有那么多方法哪来的呢？是通过Vue的prototype挂载到原型上。
