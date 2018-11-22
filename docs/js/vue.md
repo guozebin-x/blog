@@ -216,3 +216,18 @@ vue实例挂载，最终都要通过render函数来执行，如果采用`runtime
 
 这里面有一个缓存方法，把构造函数进行了缓存，对于拥有相同父类的子组件，就不重复构造了。完了之后，通过`new VNode`实例化一个`vnode`并返回。
 
+## 派发更新和nextTick
+
+- `派发更新`就是当数据发生改变后，通知所有订阅了这个数据变化的`watcher`执行`update`
+
+- 派发更新的过程中会把所有要执行`update`的`watcher`推入队列中，在`nextTick`后执行`flush`。
+
+- 把所有的数据变化都收集到一次，做一次`nextTick`
+
+- 数据的变化到dom的变化是一个异步的过程
+
+- 本次`nextTick`如果没有执行到，会被收集到`callbacks`数组中，下次`nextTick`执行
+
+- `nextTick`返回一个`promise`对象
+
+- `nextTick`是把要执行的任务推入到一个队列中，在下一个tick同步执行 

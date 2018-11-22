@@ -110,6 +110,14 @@ sudo port reload mariadb-10.1-server
 sudo port unload mariadb-10.1-server
 ```
 
+**log位置**
+
+```
+/opt/local/var/log
+```
+
+
+
 ## npm全局安装包路径
 
 ```
@@ -144,4 +152,28 @@ sudo apachectl -k stop
 **关闭Apache及开机启动**
 ```
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+```
+
+## nginx
+
+查看是否配置正常
+
+```
+nginx -t
+```
+
+## php
+
+配置环境变量
+
+```
+vi /opt/local/etc/php71/php-fpm.d/www.conf
+
+找到 env 配置
+```
+
+查看已安装扩展
+
+```
+php -m
 ```

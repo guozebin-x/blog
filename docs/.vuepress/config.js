@@ -33,6 +33,7 @@ module.exports = {
           title: 'JavaScript',
           collapsable: false,
           children: [
+            'build',
             'OAuth2.0',
             'hybrid',
             'mobile-adaptive',
