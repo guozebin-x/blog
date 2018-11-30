@@ -15,6 +15,7 @@
 
 提交远程仓库：git push [origin master] // []可以省略
 
+master之外的分支直接使用git push:
 git push --set-upstream origin develop
 ```
 
