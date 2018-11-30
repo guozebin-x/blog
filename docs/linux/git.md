@@ -14,6 +14,8 @@
 提交本地仓库：git commit -m '本次提交注释'
 
 提交远程仓库：git push [origin master] // []可以省略
+
+git push --set-upstream origin develop
 ```
 
 **偶尔使用：**
