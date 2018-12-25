@@ -180,7 +180,21 @@ php -m
 
 ## redis 
 
+前台启动
 ```sh
-which redis-server
-/opt/local/bin/redis-server
+# which redis-server
+# /opt/local/bin/redis-server
+redis-server
+```
+
+后台启动
+
+```sh
+sudo port load redis
+```
+
+客户端命令：
+
+```sh
+redis-cli
 ```
