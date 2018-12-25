@@ -177,3 +177,10 @@ vi /opt/local/etc/php71/php-fpm.d/www.conf
 ```
 php -m
 ```
+
+## redis 
+
+```sh
+which redis-server
+/opt/local/bin/redis-server
+```
