@@ -86,3 +86,5 @@ merge分支:
 4. hotfix/release/feature这三个分支的名字，作为一个文件夹类似的东西，比如hotfix/login
 
 5. 新功能分支不能与master分支有交互
+
+6. 如果从develop上切出来一个feature分支，这时候develop和feature分支都在往前走，feature上已经有很多次commit了，如果想要把这些commit合并成一个，执行git rebase develop，解决冲突，然后上传，切到develop分支，git merge feature合并过来，删除feature
