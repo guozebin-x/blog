@@ -198,3 +198,5 @@ sudo port load redis
 ```sh
 redis-cli
 ```
+
+<RightMenu />

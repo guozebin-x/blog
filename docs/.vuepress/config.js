@@ -1,25 +1,26 @@
 module.exports = {
-  title: 'evan\'s blog',
   base: '/',
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: `/logo.png`
+      }
+    ],
+  ],
   themeConfig: {
     editLinkText: '编辑此页',
     lastUpdated: '上次更新',
+    logo: '/left-logo.png',
     nav: [
       {
-        text: 'JS',
-        link: '/js/',
-      },
-      {
-        text: 'NODE',
-        link: '/node/'
+        text: '大前端',
+        link: '/frontend/js/build.html',
       },
       {
         text: 'LINUX',
         link: '/linux/',
-      },
-      {
-        text: '说明',
-        link: '/instructions/'
       },
       {
         text: '关于',
@@ -28,37 +29,35 @@ module.exports = {
       { text: 'GitHub', link: 'https://github.com/vanoneang' }
     ],
     sidebar: {
-      '/js/': [
+      '/frontend/': [
         {
           title: 'JavaScript',
-          collapsable: false,
+          collapsable: true,
           children: [
-            'build',
-            'OAuth2.0',
-            'hybrid',
-            'mobile-adaptive',
-            'http',
-            'basic-knowledge',
-            'senior-knowledge',
-            'function',
-            'the-little-knowledge',
-            'vue',
-            'vue-jsonp',
-            'azure-storage',
-            'webpack'
+            'js/build.html',
+            'js/OAuth2.0',
+            'js/hybrid',
+            'js/mobile-adaptive',
+            'js/http',
+            'js/basic-knowledge',
+            'js/senior-knowledge',
+            'js/function',
+            'js/the-little-knowledge',
+            'js/vue',
+            'js/vue-jsonp',
+            'js/azure-storage',
+            'js/webpack'
+          ]
+        },
+        {
+          title: 'NodeJS',
+          collapsable: true,
+          children: [
+            'node/basis',
+            'node/koa'
           ]
         }
       ], 
-      '/node/': [
-        {
-          title: 'NodeJS',
-          collapsable: false,
-          children: [
-            'basis',
-            'koa'
-          ]
-        }
-      ],
       '/linux/':[
         {
           title: 'Linux',
