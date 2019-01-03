@@ -16,7 +16,7 @@ module.exports = {
     nav: [
       {
         text: '大前端',
-        link: '/frontend/js/build.html',
+        link: '/frontend/js/http.html',
       },
       {
         text: 'LINUX',
@@ -34,11 +34,10 @@ module.exports = {
           title: 'JavaScript',
           collapsable: true,
           children: [
-            'js/build.html',
+            'js/http',
             'js/OAuth2.0',
             'js/hybrid',
             'js/mobile-adaptive',
-            'js/http',
             'js/basic-knowledge',
             'js/senior-knowledge',
             'js/function',
