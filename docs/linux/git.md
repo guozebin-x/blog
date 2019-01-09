@@ -51,6 +51,16 @@ git push origin devel:devel
 
 切换本地分支：git checkout master
 
+1 - git rebase HEAD~2 -i
+2 - pick 最新记录 （这里是合并到）
+    squash 第二条 （这里是被合并的）
+    squash 第三条（这里是被合并的）
+
+修正上一条commit
+git add .
+git commit --amend
+
+git log --oneline
 
 merge分支:
 
