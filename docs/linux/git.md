@@ -39,13 +39,17 @@ git push --set-upstream origin develop
 
 查看本地分支：git branch
 
+创建本地分支，但依旧停留在当前分支：git branch devel
+
 切换远程分支并创建到本地：git checkout -b devel origin/devel
 
 本地创建分支，并推送到远端：
-git checkout -B devel
+git checkout -b devel
 git push origin devel:devel
 
 删除本地分支(先切换到master分支)：git branch -D devel
+
+-D是--delete --force的缩写，你也可以写成-df。
 
 删除远端分支: git push origin --delete devel
 
@@ -55,6 +59,8 @@ git push origin devel:devel
 2 - pick 最新记录 （这里是合并到）
     squash 第二条 （这里是被合并的）
     squash 第三条（这里是被合并的）
+~的作用是在纵向上定位。它可以一直追溯到最早的祖先commit。如果commit历史有分叉，那它就选第一个，也就是主干上的那个。
+
 
 修正上一条commit
 git add .

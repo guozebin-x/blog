@@ -6,6 +6,28 @@
 
 - JS-Web-API（W3C标准），api，node不遵循W3C规范
 
+## 数据类型
+
+原始类型： `number` `boolean` `string` `null` `undefined` + 对象类型： `object`
+
+隐式转换：
+
+转换为数字类型： `num - 0`   转换为字符串类型： `num + ''`
+
+`===` 判断：1.先判断类型，类型不同，返回 false 2. null === null   undefined === undefined  NaN === NaN（false） 
+
+`==` 判断： object == number | string 尝试对象转为基本类型
+
+**类型检测**
+
+typeof 检测基本类型及function检测 返回一个字符串 （'number' 'string' 'function' 'object' 'undefined'） 
+
+```js
+typeof null === 'object' // true 历史遗留问题
+```
+
+instanceof 1. 跨 iframe 不能用 instanceof 检测 2. instanceof 用来检测原型
+
 ## DOM
 
 **DOM操作（Document Object Model）(数据结构：树)**
