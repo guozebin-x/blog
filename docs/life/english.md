@@ -74,3 +74,23 @@ Proper wine for proper heroes!   美酒配英雄
 - 元音字母改变发音
 
 - 元音互换和移动  词根的变化
+
+## feature
+
+1. will 
+
+used:  - predictions - promise - make decision at the time
+
+2. to be going to 
+
+used: - plans (can change) - predictions (base facts) - scheduled
+
+3. Present Simple
+
+eg: My train leaves at 9pm tomorrow.
+
+4. Present Continue 
+
+eg: I'm having a meeting with my RM at 3pm
+
+5. might could  - Modal verb

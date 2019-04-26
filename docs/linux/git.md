@@ -55,6 +55,10 @@ git push origin devel:devel
 
 切换本地分支：git checkout master
 
+查看远程库的一些信息，及与本地分支的信息: git remote show origin
+
+删除本地库中这些相比较远程库中已经不存在的分支: git remote prune origin
+
 1 - git rebase HEAD~2 -i
 2 - pick 最新记录 （这里是合并到）
     squash 第二条 （这里是被合并的）
