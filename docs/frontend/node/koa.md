@@ -29,7 +29,7 @@ app.listen(3000)  // 监听端口
 ```
 在app.use中是个函数，那么先简单的来实现一下application.js这个文件
 
-``` js{4}
+``` js
 let http = require('http')
 
 class Koa {
@@ -56,7 +56,7 @@ module.exports = Koa
 
 到这里发现koa的ctx还没出现，出现的是原生的req和res，那就说明ctx是koa封装的，看下面这个
 
-``` js{4}
+``` js
 app.use((ctx)=>{
   console.log(ctx.req.path); // ctx.req = req
   console.log(ctx.request.path); // ctx.request是koa自己封装的属性
@@ -67,7 +67,7 @@ app.use((ctx)=>{
 ```
 所以，ctx是koa封装的一个对象，ctx上有几个属性，那么在上面application.js中handleRequest就要创建一个上下文了
 
-``` js{4}
+``` js
   handleRequest(req,res){
     let ctx = this.createContext(req,res);
     this.callbackFn(ctx)
@@ -75,7 +75,7 @@ app.use((ctx)=>{
 ```
 实现createContext方法
 
-``` js{4}
+``` js
 // 首先引入context.js，在构造函数中声明为类的对象
 // 希望ctx可以拿到context的属性，但是不修改context
 createContext(req,res){
@@ -90,7 +90,7 @@ createContext(req,res){
 
 然后就是request.js的实现了
 
-``` js{4}
+``` js
 let url = require('url')
 let request = {
   get url(){
@@ -104,7 +104,7 @@ module.exports = request
 ```
 当然，如果你想这样写也是一样的
 
-``` js{4}
+``` js
 Object.defineProperty(obj, 'url', {
     get () {
     
@@ -113,7 +113,7 @@ Object.defineProperty(obj, 'url', {
 ```
 接下来比较关键的就是koa的ctx可以直接调用url，这不是request的属性吗？所以这是是用ctx来**代理**一下ctx.request属性，下面来写一下context.js这个文件
 
-``` js{4}
+``` js
 let proto = {
 
 };
@@ -143,7 +143,7 @@ module.exports = proto;
 
 这里先写个小demo
 
-``` js{4}
+``` js
 let response = {
     set body (value) {
         this._body = value
@@ -154,7 +154,7 @@ response.body = 'hello' // 打印出来hello，这块是原生的
 ```
 那么response.js
 
-``` js{4}
+``` js
 let response = {
   set body(value){
     this.res.statusCode = 200 //只要调用了ctx.body="xxx"就会成功
@@ -169,7 +169,7 @@ module.exports = response
 
 此时，客户端来了请求，handleRequest接收到了，ctx发生了改变，就要做出相应的响应
 
-``` js{4}
+``` js
  handleRequest(req,res){
     res.statusCode = 404;// 默认页面找不到
     let ctx = this.createContext(req,res);
@@ -185,7 +185,7 @@ module.exports = response
 ```
 下面就是把回调改成逼格满满的promise,把handleRequest中的`this.callbackFn(ctx)`改造一下`let composeMiddleware = this.compose(ctx,this.middlewares);`这个方法返回的是个promise；
 
-``` js{4}
+``` js
   constructor(){
     this.callbackFn;
     this.middlewares = [];

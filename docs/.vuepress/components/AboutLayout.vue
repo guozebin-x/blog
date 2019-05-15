@@ -3,26 +3,14 @@
     <p class="protocol"> 人生若只如初见，何事秋风悲画扇。</p>
     <div class="desc-box">
       <div class="desc-name">
-        <img src="http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM43C503OwicNDLLaJ9VcVZywIZiafzNsPdV9NYljiaOVJGhlDyze8l6mj0jTu38f7Bhgwy1ib6NeXRh0g/132">
+        <img src="https://avatars2.githubusercontent.com/u/7609249">
         <p>作者</p>
       </div>
       <div class="desc-text">
         <p><span>大名：</span>一飞同学</p>
         <p><span>公司：</span>EPAM</p>
         <p><span>职业：</span>大前端一锅乱炖</p>
-        <p><a href="https://github.com/vanoneang">Github</a><a href="https://vanoneang.github.io/">Blog</a><a href="https://www.zhihu.com/people/wang-yifei-25-11/activities">知乎</a><a href="http://weibo.com/2846157995">微博</a></p>
-      </div>
-    </div>
-    <div class="desc-box">
-      <div class="desc-name">
-        <img src="https://avatars2.githubusercontent.com/u/7609249">
-        <p>大物</p>
-      </div>
-      <div class="desc-text">
-        <p><span>大名：</span>田小妞</p>
-        <p><span>小名：</span>小皮皮</p>
-        <p><span>格言：</span>皮皮虾，我们走</p>
-        <p><a href="">Github</a><a href="">Blog</a><a href="">知乎</a></p>
+        <p><a href="https://github.com/vanoneang" target="_blank">Github</a><a  target="_blank"href="https://vanoneang.github.io/">Blog</a><a  target="_blank"href="https://www.zhihu.com/people/wang-yifei-25-11/activities">知乎</a><a  target="_blank"href="http://weibo.com/2846157995">微博</a></p>
       </div>
     </div>
   </div>

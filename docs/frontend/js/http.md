@@ -4,7 +4,6 @@
 
 <img :src="$withBase('/assets/TCPIP.png')" >
 
-<img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1535116503&di=594b5c732b509119ff4dbe0862cae98b&src=http://file25.mafengwo.net/M00/0A/AC/wKgB4lMC26CAWsKoAALb5778DWg60.rbook_comment.w1024.jpeg" >
 
 OSI模型是在协议开发前设计的，具有通用性。TCP/IP是先有协议集然后建立模型，不适用于非TCP/IP网络。
 

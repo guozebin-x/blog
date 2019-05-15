@@ -23,6 +23,10 @@ module.exports = {
         link: '/linux/',
       },
       {
+        text: 'Blog',
+        link: '/blog/git.html',
+      },
+      {
         text: '关于',
         link: '/about/'
       },
@@ -64,6 +68,15 @@ module.exports = {
           children: [
             'nginx',
             'crontab',
+            'git'
+          ]
+        }
+      ],
+      '/blog/': [
+        {
+          title: 'Blog',
+          collapsable: false,
+          children: [
             'git'
           ]
         }
