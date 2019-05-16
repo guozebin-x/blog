@@ -19,7 +19,7 @@ module.exports = {
         link: '/frontend/js/http.html',
       },
       {
-        text: 'LINUX',
+        text: '运维',
         link: '/linux/',
       },
       {
