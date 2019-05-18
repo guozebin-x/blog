@@ -19,7 +19,7 @@
 .container
   padding 40px 20px
   max-width 960px
-  margin 0 auto
+  margin 0 auto 
   .protocol
     margin-bottom 40px
   .desc-box
