@@ -27,6 +27,10 @@ module.exports = {
         link: '/blog/git.html',
       },
       {
+        text: 'English learning',
+        link: '/english/phrases-and-sentences.html',
+      },
+      {
         text: '关于',
         link: '/about/'
       },
@@ -80,7 +84,16 @@ module.exports = {
             'git'
           ]
         }
-      ]
+      ],
+      '/english/': [
+        {
+          title: 'English learning ',
+          collapsable: false,
+          children: [
+            'phrases-and-sentences'
+          ]
+        }
+      ],
     }
   }
 }
