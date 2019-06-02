@@ -20,6 +20,10 @@ yum list crontabs && which crontab && crontab -l
 
 ## crontab架构
 
+<img src="../img/crontab.png" >
+
+比如：10 * * * * 代表每小时的第十分钟，如果想要实现每十分钟执行一次，*/10 * * * *
+
 ```
 * * * * * my Command  // 分时日月周
 

@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         text: 'English learning',
-        link: '/english/phrases-and-sentences.html',
+        link: '/english/taiji-grammar.html',
       },
       {
         text: '关于',
@@ -90,7 +90,7 @@ module.exports = {
           title: 'English learning ',
           collapsable: false,
           children: [
-            'phrases-and-sentences'
+            'taiji-grammar'
           ]
         }
       ],
