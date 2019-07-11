@@ -81,7 +81,8 @@ module.exports = {
           title: 'Blog',
           collapsable: false,
           children: [
-            'git'
+            'git',
+            'process'
           ]
         }
       ],
