@@ -225,6 +225,8 @@ function find (page, items, offset) {
   .next
     float right
 @media (max-width: $MQMobile)
+  .page
+    margin-right 0
   .page-edit
     .edit-link
       margin-bottom 0.5rem

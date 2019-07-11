@@ -109,4 +109,8 @@ export default {
       top 50%
       transform translate(0, -50%)
       left -30px
+@media (max-width: 920px)
+  .rightMenuWrapper
+    display none
+
 </style>
