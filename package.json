@@ -7,8 +7,8 @@
     "vuepress": "bin/vuepress.js"
   },
   "scripts": {
-    "dev": "node bin/vuepress dev docs",
-    "build": "node bin/vuepress build docs",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "deploy-gh": "yarn build && bash scripts/deploy-gh.sh",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",

@@ -280,4 +280,3 @@ http.createServer((req, res) => {
 })
 ```
 
-<RightMenu />
